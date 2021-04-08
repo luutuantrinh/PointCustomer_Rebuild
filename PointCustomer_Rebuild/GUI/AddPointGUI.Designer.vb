@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmAddPointGUI
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmAddPointGUI
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.cbIDCustomer = New System.Windows.Forms.ComboBox()
@@ -40,7 +40,6 @@ Partial Class frmAddPointGUI
         Me.btnClose = New System.Windows.Forms.Button()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblTitle
@@ -61,7 +60,7 @@ Partial Class frmAddPointGUI
         Me.cbIDCustomer.ForeColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(55, Byte), Integer))
         Me.cbIDCustomer.FormattingEnabled = True
         Me.cbIDCustomer.Location = New System.Drawing.Point(208, 156)
-        Me.cbIDCustomer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbIDCustomer.Margin = New System.Windows.Forms.Padding(4)
         Me.cbIDCustomer.Name = "cbIDCustomer"
         Me.cbIDCustomer.Size = New System.Drawing.Size(253, 25)
         Me.cbIDCustomer.TabIndex = 3
@@ -83,7 +82,7 @@ Partial Class frmAddPointGUI
         Me.txtIDInitialization.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.txtIDInitialization.ForeColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(55, Byte), Integer))
         Me.txtIDInitialization.Location = New System.Drawing.Point(210, 102)
-        Me.txtIDInitialization.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtIDInitialization.Margin = New System.Windows.Forms.Padding(4)
         Me.txtIDInitialization.Name = "txtIDInitialization"
         Me.txtIDInitialization.Size = New System.Drawing.Size(252, 25)
         Me.txtIDInitialization.TabIndex = 6
@@ -105,7 +104,7 @@ Partial Class frmAddPointGUI
         Me.txtNameOfCustomer.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.txtNameOfCustomer.ForeColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(55, Byte), Integer))
         Me.txtNameOfCustomer.Location = New System.Drawing.Point(210, 222)
-        Me.txtNameOfCustomer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNameOfCustomer.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNameOfCustomer.Name = "txtNameOfCustomer"
         Me.txtNameOfCustomer.Size = New System.Drawing.Size(252, 25)
         Me.txtNameOfCustomer.TabIndex = 8
@@ -139,7 +138,7 @@ Partial Class frmAddPointGUI
         Me.txtMoney.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.txtMoney.ForeColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(55, Byte), Integer))
         Me.txtMoney.Location = New System.Drawing.Point(616, 102)
-        Me.txtMoney.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtMoney.Margin = New System.Windows.Forms.Padding(4)
         Me.txtMoney.Name = "txtMoney"
         Me.txtMoney.Size = New System.Drawing.Size(252, 25)
         Me.txtMoney.TabIndex = 11
@@ -255,26 +254,11 @@ Partial Class frmAddPointGUI
         Me.Label1.TabIndex = 19
         Me.Label1.Text = "Ngày giao dịch"
         '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(157, Byte), Integer), CType(CType(152, Byte), Integer))
-        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(207, Byte), Integer), CType(CType(212, Byte), Integer))
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(55, Byte), Integer))
-        Me.Button1.Location = New System.Drawing.Point(710, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(137, 41)
-        Me.Button1.TabIndex = 20
-        Me.Button1.Text = "Test"
-        Me.Button1.UseVisualStyleBackColor = False
-        '
         'frmAddPointGUI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1150, 321)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.btnClose)
@@ -295,7 +279,7 @@ Partial Class frmAddPointGUI
         Me.Controls.Add(Me.lblTitle)
         Me.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmAddPointGUI"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AddPointGUI"
@@ -322,5 +306,4 @@ Partial Class frmAddPointGUI
     Friend WithEvents btnClose As Button
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button1 As Button
 End Class

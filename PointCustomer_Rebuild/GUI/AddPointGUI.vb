@@ -1,4 +1,6 @@
-﻿Public Class frmAddPointGUI
+﻿Imports System.Data.Entity
+
+Public Class frmAddPointGUI
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
         Dim OBJ As New frmPointGUI
@@ -36,6 +38,7 @@
 
     ' Chuyển tiền thành điểm 
     Private Sub btnCalculator_Click(sender As Object, e As EventArgs) Handles btnCalculator.Click
+        XuLyNgay()
         Dim tempPoint As Integer
         tempPoint = 0
         tempPoint = Convert.ToInt32(Me.txtMoney.Text) / 50000
@@ -46,7 +49,7 @@
 
         End If
         lblPointCalculator.Text = tempPoint.ToString
-        XuLyNgay()
+
 
     End Sub
 
@@ -61,7 +64,10 @@
         Dim dateVariables As Date
         dateVariables = db.Events.Where(Function(u) u.DayOfEvent = tempDate).Select(Function(u) u.DayOfEvent).SingleOrDefault()
         'MsgBox(dateVariables)
-        If dateVariables = tempDate Then
+
+        Dim dateVariablesBỉthday As Date
+        dateVariablesBỉthday = db.Customers.Where(Function(u) u.DateOfBirth = tempDate).Select(Function(u) u.DateOfBirth).SingleOrDefault()
+        If (dateVariables = tempDate Or dateVariablesBỉthday = tempDate) Then
             Me.lblStatusActive.Text = "X 2"
         Else
             Me.lblStatusActive.Text = "X 1"
@@ -72,19 +78,56 @@
 #End Region
 
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    'Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        Dim tempDate As Date
-        tempDate = DateTimePicker1.Value.ToShortDateString()
-        MsgBox(tempDate)
-        Dim db As ContextClass = New ContextClass()
+    '    Dim tempDate As Date
+    '    tempDate = DateTimePicker1.Value.ToShortDateString()
+    '    MsgBox(tempDate)
+    '    Dim db As ContextClass = New ContextClass()
 
-        Dim dateVariables As Date
-        dateVariables = db.Events.Where(Function(u) u.DayOfEvent = tempDate).Select(Function(u) u.DayOfEvent).SingleOrDefault()
-        MsgBox(dateVariables)
-        If dateVariables = tempDate Then
-            MsgBox("ok")
+    '    Dim dateVariables As Date
+    '    dateVariables = db.Events.Where(Function(u) u.DayOfEvent = tempDate).Select(Function(u) u.DayOfEvent).SingleOrDefault()
+    '    MsgBox(dateVariables)
+    '    If dateVariables = tempDate Then
+    '        MsgBox("ok")
+    '    End If
+    'End Sub
+
+#Region "Lưu dữ liêu vào data"
+
+    Protected Sub UpdateToGridView()
+
+        Dim db As ContextClass = New ContextClass
+        Dim model As tblInitializationPoint = New tblInitializationPoint()
+        Dim emptyTextBoxes =
+    From txt In Me.Controls.OfType(Of TextBox)()
+    Where txt.Text.Length = 0
+    Select txt.Name
+        If emptyTextBoxes.Any Then
+            MessageBox.Show(String.Format("Bạn cần vào số tiền rồi bấm vào tính điểm hoặc bạn chưa nhập dữ liệu vào các trường sau: {0}",
+                    String.Join(",", emptyTextBoxes)))
+        Else
+            model.IDInitializationPoint = txtIDInitialization.Text
+            model.IDCustomer = cbIDCustomer.Text
+            model.Money = Convert.ToInt32(txtMoney.Text)
+            model.DateOfPurchase = Convert.ToDateTime(DateTimePicker1.Text)
+            model.Point = Convert.ToInt32(lblPointCalculator.Text)
+            db.InitializationPoints.Add(model)
+            Dim a = db.SaveChanges()
+            If a > 0 Then
+                MsgBox("Thêm vào thành công")
+            Else
+                MsgBox("Chưa được thêm vào")
+            End If
         End If
+
+
+        ' db.Entry(model).State = EntityState.Modified
+
     End Sub
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        UpdateToGridView()
+    End Sub
+#End Region
 
 End Class

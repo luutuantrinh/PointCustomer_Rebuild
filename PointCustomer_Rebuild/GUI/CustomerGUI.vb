@@ -1,4 +1,5 @@
-﻿Imports System.Threading
+﻿Imports System.Data.Entity
+Imports System.Threading
 
 Public Class frmCustomerGUI
     Dim is_viewing = False
@@ -54,6 +55,7 @@ Public Class frmCustomerGUI
     End Sub
 
     Private Sub DataGridViewCustomer_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewCustomer.CellClick
+        is_viewing = False
         Dim i As Integer
         i = DataGridViewCustomer.CurrentRow.Index
         Me.txtIDCustomer.Text = DataGridViewCustomer.Item(0, i).Value
@@ -61,6 +63,7 @@ Public Class frmCustomerGUI
         Me.txtDayOfBirth.Text = DataGridViewCustomer.Item(2, i).Value
         Me.txtContact.Text = DataGridViewCustomer.Item(3, i).Value
         Me.txtDayOfCreate.Text = DataGridViewCustomer.Item(4, i).Value
+        is_viewing = True
     End Sub
 
     'làm sạch dữ liệu ở các ô 
@@ -77,6 +80,38 @@ Public Class frmCustomerGUI
         DataGridViewCustomer.ClearSelection()
     End Sub
 
+    ' vẫn là clear nhưng thủ công 
+    Public Sub ResetTextbox()
+        txtIDCustomer.Clear()
+        txtNameOfCustomer.Clear()
+        txtDayOfBirth.Clear()
+        txtContact.Clear()
+        txtDayOfCreate.Clear()
+        is_viewing = False
+        DataGridViewCustomer.ClearSelection()
+    End Sub
+
+    'Chặn người dùng nhập chữ vào số điện thoại
+    Private Sub txtContact_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtContact.KeyPress
+        If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) AndAlso (e.KeyChar <> "."c) Then
+            e.Handled = True
+        End If
+
+        If (e.KeyChar = "."c) AndAlso ((TryCast(sender, TextBox)).Text.IndexOf("."c) > -1) Then
+            e.Handled = True
+        End If
+    End Sub
+
+
+    'Chống người dùng thay đổi ID trong lúc ở chế độ xem 
+    Private Sub txtIDCustomer_TextChanged(sender As Object, e As EventArgs) Handles txtIDCustomer.TextChanged
+        If is_viewing Then
+            Dim result As DialogResult = MessageBox.Show("Bạn đang ở chế độ xem, bạn có muốn thêm mới ?", "Cảnh báo", MessageBoxButtons.YesNo)
+            If result = DialogResult.Yes Then
+                ClearTextBox(Me)
+            End If
+        End If
+    End Sub
 
 #End Region
 
@@ -86,10 +121,55 @@ Public Class frmCustomerGUI
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-
+        Dim db As ContextClass = New ContextClass
+        Dim model As tblCustomer = New tblCustomer()
+        Dim emptyTextBoxes =
+    From txt In Me.Controls.OfType(Of TextBox)()
+    Where txt.Text.Length = 0
+    Select txt.Name
+        If emptyTextBoxes.Any Then
+            MessageBox.Show(String.Format("Bạn chưa nhập dữ liệu vào các trường sau: {0}",
+                    String.Join(",", emptyTextBoxes)))
+        Else
+            model.IDCustomer = txtIDCustomer.Text
+            model.FullName = txtNameOfCustomer.Text
+            model.DateOfBirth = Convert.ToDateTime(txtDayOfBirth.Text)
+            model.Contact = txtContact.Text
+            model.DateOfCreate = Convert.ToDateTime(txtDayOfCreate.Text)
+            db.Customers.Add(model)
+            db.SaveChanges()
+            ResetTextbox()
+            LoadData()
+        End If
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        Dim emptyTextBoxes =
+    From txt In Me.Controls.OfType(Of TextBox)()
+    Where txt.Text.Length = 0
+    Select txt.Name
+        If emptyTextBoxes.Any Then
+            MessageBox.Show(String.Format("Bạn muốn xóa dữ liệu ? Chọn trường dữ liệu bạn muốn xóa.",
+                    String.Join(",", emptyTextBoxes)))
+        Else
+            If MessageBox.Show("Bạn chắc chắn muốn xóa khách hàng này ?", "Remove Customer", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                Using dbCustomer As New ContextClass
+                    Dim obj As tblCustomer = TryCast(TblCustomerBindingSource.Current, tblCustomer)
+                    If obj IsNot Nothing Then
+                        If dbCustomer.Entry(Of tblCustomer)(obj).State = EntityState.Detached Then
+                            dbCustomer.Set(Of tblCustomer).Attach(obj)
+                            dbCustomer.Entry(Of tblCustomer)(obj).State = EntityState.Deleted
+                            dbCustomer.SaveChanges()
+                            MsgBox("Khách hàng đã được xóa khỏi hệ thống")
+                            TblCustomerBindingSource.RemoveCurrent()
+                        End If
+                    End If
+                End Using
+            Else
+                MessageBox.Show("Khách hàng chưa được xóa.", "Remove Row", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                ResetTextbox()
+            End If
+        End If
 
     End Sub
 #End Region
@@ -170,6 +250,7 @@ Public Class frmCustomerGUI
         th_NhanDuLieu.IsBackground = True
         th_NhanDuLieu.Start()
     End Sub
+
 
 #End Region
 
