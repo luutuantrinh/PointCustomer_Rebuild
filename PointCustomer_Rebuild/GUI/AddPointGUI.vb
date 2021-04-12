@@ -41,7 +41,8 @@ Public Class frmAddPointGUI
         XuLyNgay()
         Dim tempPoint As Integer
         tempPoint = 0
-        tempPoint = Convert.ToInt32(Me.txtMoney.Text) / 50000
+        'Fix lỗi lượng tiền chứa dc là quá nhỏ ToInt32 > ToInt64
+        tempPoint = Convert.ToInt64(Me.txtMoney.Text) / 50000
         If Me.lblStatusActive.Text = "X 2" Then
             tempPoint *= 2
         ElseIf Me.lblStatusActive.Text = "X 1" Then
@@ -61,13 +62,27 @@ Public Class frmAddPointGUI
         'MsgBox(tempDate)
         Dim db As ContextClass = New ContextClass()
 
+        'Lấy ngày trùng với ngày có trong bảng Event 
         Dim dateVariables As Date
         dateVariables = db.Events.Where(Function(u) u.DayOfEvent = tempDate).Select(Function(u) u.DayOfEvent).SingleOrDefault()
         'MsgBox(dateVariables)
 
+        'Lấy ra ngày sinh trùng với mã khách hàng trong textbox 
         Dim dateVariablesBỉthday As Date
-        dateVariablesBỉthday = db.Customers.Where(Function(u) u.DateOfBirth = tempDate).Select(Function(u) u.DateOfBirth).SingleOrDefault()
-        If (dateVariables = tempDate Or dateVariablesBỉthday = tempDate) Then
+        dateVariablesBỉthday = db.Customers.Where(Function(u) u.IDCustomer = cbIDCustomer.Text).Select(Function(u) u.DateOfBirth).SingleOrDefault()
+        MsgBox(dateVariablesBỉthday)
+
+        'Lấy ngày tháng của ngày chọn trong ngày sinh của người đang được chọn 
+        Dim monthBirth = dateVariablesBỉthday.Month()
+        Dim dayBirth = dateVariablesBỉthday.Day()
+
+        'Lấy ngày tháng của ngày chọn trong picktime
+        Dim tempDateCustom As Date
+        tempDateCustom = DateTimePicker1.Value.Date()
+        Dim month = tempDateCustom.Month()
+        Dim day = tempDateCustom.Day()
+
+        If (dateVariables = tempDate Or (month = monthBirth And day = dayBirth)) Then
             Me.lblStatusActive.Text = "X 2"
         Else
             Me.lblStatusActive.Text = "X 1"
