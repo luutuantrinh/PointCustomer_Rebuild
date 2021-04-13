@@ -126,6 +126,12 @@
     <Compile Include="GUI\PointGUI.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\QuickChange_Coeficent.Designer.vb">
+      <DependentUpon>QuickChange_Coeficent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuickChange_Coeficent.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\QuickUpdate.Designer.vb">
       <DependentUpon>QuickUpdate.vb</DependentUpon>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PointGUI.resx">
       <DependentUpon>PointGUI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuickChange_Coeficent.resx">
+      <DependentUpon>QuickChange_Coeficent.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuickUpdate.resx">
       <DependentUpon>QuickUpdate.vb</DependentUpon>

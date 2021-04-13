@@ -25,11 +25,11 @@ Partial Class frmCoefficientGUI
         Me.components = New System.ComponentModel.Container()
         Me.lblCoefficient = New System.Windows.Forms.Label()
         Me.DataGridViewCoefficient = New System.Windows.Forms.DataGridView()
-        Me.btnCancel = New System.Windows.Forms.Button()
         Me.IDCoefficientDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CoefficientNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CoefficientNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TblCoefficientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.btnCancel = New System.Windows.Forms.Button()
         CType(Me.DataGridViewCoefficient, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TblCoefficientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -58,20 +58,6 @@ Partial Class frmCoefficientGUI
         Me.DataGridViewCoefficient.Size = New System.Drawing.Size(654, 280)
         Me.DataGridViewCoefficient.TabIndex = 3
         '
-        'btnCancel
-        '
-        Me.btnCancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
-        Me.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
-        Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCancel.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
-        Me.btnCancel.Location = New System.Drawing.Point(526, 370)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(147, 56)
-        Me.btnCancel.TabIndex = 15
-        Me.btnCancel.Text = "Thoát"
-        Me.btnCancel.UseVisualStyleBackColor = False
-        '
         'IDCoefficientDataGridViewTextBoxColumn
         '
         Me.IDCoefficientDataGridViewTextBoxColumn.DataPropertyName = "IDCoefficient"
@@ -93,6 +79,20 @@ Partial Class frmCoefficientGUI
         'TblCoefficientBindingSource
         '
         Me.TblCoefficientBindingSource.DataSource = GetType(PointCustomer_Rebuild.tblCoefficient)
+        '
+        'btnCancel
+        '
+        Me.btnCancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
+        Me.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
+        Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCancel.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
+        Me.btnCancel.Location = New System.Drawing.Point(526, 370)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(147, 56)
+        Me.btnCancel.TabIndex = 15
+        Me.btnCancel.Text = "Thoát"
+        Me.btnCancel.UseVisualStyleBackColor = False
         '
         'frmCoefficientGUI
         '

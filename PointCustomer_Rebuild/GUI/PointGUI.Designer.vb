@@ -23,6 +23,9 @@ Partial Class frmPointGUI
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblNameOfFromCus = New System.Windows.Forms.Label()
         Me.DataGridViewPontCustomer = New System.Windows.Forms.DataGridView()
@@ -58,14 +61,14 @@ Partial Class frmPointGUI
         Me.DataGridViewPontCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewPontCustomer.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDInitializationPointDataGridViewTextBoxColumn, Me.IDCustomerDataGridViewTextBoxColumn, Me.MoneyDataGridViewTextBoxColumn, Me.PointDataGridViewTextBoxColumn, Me.DateOfPurchaseDataGridViewTextBoxColumn})
         Me.DataGridViewPontCustomer.DataSource = Me.TblInitializationPointBindingSource
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewPontCustomer.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewPontCustomer.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewPontCustomer.Location = New System.Drawing.Point(32, 63)
         Me.DataGridViewPontCustomer.Name = "DataGridViewPontCustomer"
         Me.DataGridViewPontCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -119,18 +122,26 @@ Partial Class frmPointGUI
         'MoneyDataGridViewTextBoxColumn
         '
         Me.MoneyDataGridViewTextBoxColumn.DataPropertyName = "Money"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "#,###,### VNĐ"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.MoneyDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.MoneyDataGridViewTextBoxColumn.HeaderText = "Số tiền "
         Me.MoneyDataGridViewTextBoxColumn.Name = "MoneyDataGridViewTextBoxColumn"
         '
         'PointDataGridViewTextBoxColumn
         '
         Me.PointDataGridViewTextBoxColumn.DataPropertyName = "Point"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.PointDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.PointDataGridViewTextBoxColumn.HeaderText = "Điểm tích lũy"
         Me.PointDataGridViewTextBoxColumn.Name = "PointDataGridViewTextBoxColumn"
         '
         'DateOfPurchaseDataGridViewTextBoxColumn
         '
         Me.DateOfPurchaseDataGridViewTextBoxColumn.DataPropertyName = "DateOfPurchase"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DateOfPurchaseDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.DateOfPurchaseDataGridViewTextBoxColumn.HeaderText = "Ngày giao dịch"
         Me.DateOfPurchaseDataGridViewTextBoxColumn.Name = "DateOfPurchaseDataGridViewTextBoxColumn"
         '

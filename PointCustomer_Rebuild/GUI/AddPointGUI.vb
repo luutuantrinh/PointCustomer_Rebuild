@@ -9,13 +9,15 @@ Public Class frmAddPointGUI
 
     Private Sub frmAddPointGUI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim db As ContextClass = New ContextClass
-        cbIDCustomer.DataSource = (From c In db.Customers Select c.IDCustomer, c.FullName).ToList()
+        cbIDCustomer.DataSource = (From c In db.Customers Select c.IDCustomer, c.FullName, c.Contact, c.DateOfCreate).ToList()
         cbIDCustomer.DisplayMember = "IDCustomer"
     End Sub
 
     Private Sub cbIDCustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbIDCustomer.SelectedIndexChanged
         Dim a = cbIDCustomer.SelectedItem
         txtNameOfCustomer.Text = a.FullName
+        txtContact.Text = a.Contact
+        txtDayOfCreate.Text = a.DateOfCreate
     End Sub
 
 #Region "Xử lý với tính toàn số tiền"
@@ -36,27 +38,27 @@ Public Class frmAddPointGUI
         End If
     End Sub
 
-    ' Chuyển tiền thành điểm 
-    Private Sub btnCalculator_Click(sender As Object, e As EventArgs) Handles btnCalculator.Click
-        XuLyNgay()
-        Dim tempPoint As Integer
-        tempPoint = 0
-        'Fix lỗi lượng tiền chứa dc là quá nhỏ ToInt32 > ToInt64
-        tempPoint = Convert.ToInt64(Me.txtMoney.Text) / 50000
-        If Me.lblStatusActive.Text = "X 2" Then
-            tempPoint *= 2
-        ElseIf Me.lblStatusActive.Text = "X 1" Then
-            tempPoint = tempPoint * 1
+    '' Chuyển tiền thành điểm 
+    'Private Sub btnCalculator_Click(sender As Object, e As EventArgs)
+    '    XuLyNgay()
+    '    Dim tempPoint As Integer
+    '    tempPoint = 0
+    '    'Fix lỗi lượng tiền chứa dc là quá nhỏ ToInt32 > ToInt64
+    '    tempPoint = Convert.ToInt64(Me.txtMoney.Text) / 50000
+    '    If Me.lblStatusActive.Text = "X 2" Then
+    '        tempPoint *= 2
+    '    ElseIf Me.lblStatusActive.Text = "X 1" Then
+    '        tempPoint = tempPoint * 1
 
-        End If
-        lblPointCalculator.Text = tempPoint.ToString
+    '    End If
+    '    lblPointCalculator.Text = tempPoint.ToString
 
 
-    End Sub
+    'End Sub
 
-#Region " Xử lý ngày để quyết xem có nhân đôi điểm không "
+    'Xử lý sự kiện khi thay đổi timePicker
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
 
-    Protected Sub XuLyNgay()
         Dim tempDate As Date
         tempDate = DateTimePicker1.Value.ToShortDateString()
         'MsgBox(tempDate)
@@ -82,13 +84,87 @@ Public Class frmAddPointGUI
         Dim month = tempDateCustom.Month()
         Dim day = tempDateCustom.Day()
 
-        If (dateVariables = tempDate Or (month = monthBirth And day = dayBirth)) Then
-            Me.lblStatusActive.Text = "X 2"
+        Dim tempNumberOfCoefficientNormal As Integer
+        tempNumberOfCoefficientNormal = db.Coefficients.Where(Function(u) u.IDCoefficient = "CO01").Select(Function(u) u.CoefficientNumber).SingleOrDefault()
+        'MsgBox(tempNumberOfCoefficientNormal)
+        Dim tempNumberOfCoefficientEvent As Integer
+        tempNumberOfCoefficientEvent = db.Coefficients.Where(Function(u) u.IDCoefficient = "CO02").Select(Function(u) u.CoefficientNumber).SingleOrDefault()
+
+        Dim tempNumberOfCoefficientBirthday As Integer
+        tempNumberOfCoefficientBirthday = db.Coefficients.Where(Function(u) u.IDCoefficient = "CO03").Select(Function(u) u.CoefficientNumber).SingleOrDefault()
+        'MsgBox(tempNumberOfCoefficientBirthday)
+
+        Dim tempPoint As Integer
+        tempPoint = 0
+
+
+        'Fix lỗi lượng tiền chứa dc là quá nhỏ ToInt32 > ToInt64
+        tempPoint = Convert.ToInt64(Me.txtMoney.Text) / 50000
+
+        'Hiển thị hệ số và tính toán mức điểm 
+        If dateVariables = tempDate Then
+            Me.lblStatusActive.Text = "X " + Convert.ToString(tempNumberOfCoefficientEvent)
+            tempPoint *= tempNumberOfCoefficientEvent
+        ElseIf month = monthBirth And day = dayBirth Then
+
+            Me.lblStatusActive.Text = "X " + Convert.ToString(tempNumberOfCoefficientBirthday)
+            tempPoint *= tempNumberOfCoefficientBirthday
         Else
-            Me.lblStatusActive.Text = "X 1"
+            Me.lblStatusActive.Text = "X " + Convert.ToString(tempNumberOfCoefficientNormal)
+            tempPoint *= tempNumberOfCoefficientNormal
         End If
+        lblPointCalculator.Text = tempPoint.ToString
+
+
     End Sub
-#End Region
+    '#Region " Xử lý ngày để quyết xem có thay đổi hệ số điểm không "
+
+    '    Protected Sub XuLyNgay()
+    '        Dim tempDate As Date
+    '        tempDate = DateTimePicker1.Value.ToShortDateString()
+    '        'MsgBox(tempDate)
+    '        Dim db As ContextClass = New ContextClass()
+
+    '        'Lấy ngày trùng với ngày có trong bảng Event 
+    '        Dim dateVariables As Date
+    '        dateVariables = db.Events.Where(Function(u) u.DayOfEvent = tempDate).Select(Function(u) u.DayOfEvent).SingleOrDefault()
+    '        'MsgBox(dateVariables)
+
+    '        'Lấy ra ngày sinh trùng với mã khách hàng trong textbox 
+    '        Dim dateVariablesBỉthday As Date
+    '        dateVariablesBỉthday = db.Customers.Where(Function(u) u.IDCustomer = cbIDCustomer.Text).Select(Function(u) u.DateOfBirth).SingleOrDefault()
+    '        ' MsgBox(dateVariablesBỉthday)
+
+    '        'Lấy ngày tháng của ngày chọn trong ngày sinh của người đang được chọn 
+    '        Dim monthBirth = dateVariablesBỉthday.Month()
+    '        Dim dayBirth = dateVariablesBỉthday.Day()
+
+    '        'Lấy ngày tháng của ngày chọn trong picktime
+    '        Dim tempDateCustom As Date
+    '        tempDateCustom = DateTimePicker1.Value.Date()
+    '        Dim month = tempDateCustom.Month()
+    '        Dim day = tempDateCustom.Day()
+
+    '        Dim tempNumberOfCoefficientNormal As Integer
+    '        tempNumberOfCoefficientNormal = db.Coefficients.Where(Function(u) u.IDCoefficient = "CO01").Select(Function(u) u.CoefficientNumber).SingleOrDefault()
+    '        'MsgBox(tempNumberOfCoefficientNormal)
+    '        Dim tempNumberOfCoefficientEvent As Integer
+    '        tempNumberOfCoefficientEvent = db.Coefficients.Where(Function(u) u.IDCoefficient = "CO02").Select(Function(u) u.CoefficientNumber).SingleOrDefault()
+
+    '        Dim tempNumberOfCoefficientBirthday As Integer
+    '        tempNumberOfCoefficientBirthday = db.Coefficients.Where(Function(u) u.IDCoefficient = "CO03").Select(Function(u) u.CoefficientNumber).SingleOrDefault()
+    '        'MsgBox(tempNumberOfCoefficientBirthday)
+
+    '        If dateVariables = tempDate Then
+    '            Me.lblStatusActive.Text = "X " + Convert.ToString(tempNumberOfCoefficientEvent)
+    '        ElseIf month = monthBirth And day = dayBirth Then
+
+    '            Me.lblStatusActive.Text = "X " + Convert.ToString(tempNumberOfCoefficientBirthday)
+    '        Else
+    '            Me.lblStatusActive.Text = "X " + Convert.ToString(tempNumberOfCoefficientNormal)
+    '        End If
+    '    End Sub
+    '#End Region
 
 #End Region
 
@@ -141,8 +217,20 @@ Public Class frmAddPointGUI
 
     End Sub
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        UpdateToGridView()
+        Dim db As ContextClass = New ContextClass()
+        Dim idVariables As String
+        idVariables = db.InitializationPoints.Where(Function(u) u.IDInitializationPoint = txtIDInitialization.Text).Select(Function(u) u.IDInitializationPoint).SingleOrDefault()
+        ' MsgBox(idVariables)
+        If idVariables = txtIDInitialization.Text Then
+            MsgBox("Mã này đã tồn tại , sử dụng mã khác. ")
+            txtIDInitialization.Clear()
+        Else
+            UpdateToGridView()
+        End If
+
+
     End Sub
+
 #End Region
 
 End Class

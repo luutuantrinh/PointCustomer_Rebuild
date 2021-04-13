@@ -111,21 +111,21 @@ Public Class frmCustomerGUI
 
 
     'Chống người dùng thay đổi ID trong lúc ở chế độ xem 
-    Private Sub txtIDCustomer_TextChanged(sender As Object, e As EventArgs) Handles txtIDCustomer.TextChanged
-        If is_viewing Then
-            Dim result As DialogResult = MessageBox.Show("Bạn đang ở chế độ xem, bạn có muốn thêm mới ?", "Cảnh báo", MessageBoxButtons.YesNo)
-            If result = DialogResult.Yes Then
-                ClearTextBox(Me)
-            End If
-        End If
-    End Sub
+    'Private Sub txtIDCustomer_TextChanged(sender As Object, e As EventArgs) Handles txtIDCustomer.TextChanged
+    '    If is_viewing Then
+    '        Dim result As DialogResult = MessageBox.Show("Bạn đang ở chế độ xem, bạn có muốn thêm mới ?", "Cảnh báo", MessageBoxButtons.YesNo)
+    '        If result = DialogResult.Yes Then
+    '            ClearTextBox(Me)
+    '        End If
+    '    End If
+    'End Sub
 
 #End Region
 
 #Region "Tác vụ"
-    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        ClearTextBox(Me)
-    End Sub
+    'Private Sub btnClear_Click(sender As Object, e As EventArgs)
+    '    ClearTextBox(Me)
+    'End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Dim db As ContextClass = New ContextClass

@@ -23,13 +23,18 @@ Partial Class frmCustomerGUI
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblNameOfFromCus = New System.Windows.Forms.Label()
         Me.lblIDCustomer = New System.Windows.Forms.Label()
         Me.txtIDCustomer = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtDayOfCreate = New System.Windows.Forms.TextBox()
+        Me.btnDelete = New System.Windows.Forms.Button()
         Me.txtContact = New System.Windows.Forms.TextBox()
+        Me.btnAdd = New System.Windows.Forms.Button()
         Me.txtDayOfBirth = New System.Windows.Forms.TextBox()
         Me.lblDayOfCreate = New System.Windows.Forms.Label()
         Me.lblContact = New System.Windows.Forms.Label()
@@ -45,20 +50,17 @@ Partial Class frmCustomerGUI
         Me.ThôngTinToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DanhSáchĐiểmToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NhậpĐiểmTíchLũyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ThôngTinHệSốToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ThêmToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VềChúngTôiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnClear = New System.Windows.Forms.Button()
-        Me.btnDelete = New System.Windows.Forms.Button()
-        Me.btnAdd = New System.Windows.Forms.Button()
         Me.DataGridViewCustomer = New System.Windows.Forms.DataGridView()
         Me.btnSearch = New System.Windows.Forms.Button()
-        Me.ThôngTinHệSốToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TblCustomerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.IDCustomerDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FullNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DateOfBirthDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContactDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DateOfCreateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TblCustomerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridViewCustomer, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -90,13 +92,12 @@ Partial Class frmCustomerGUI
         Me.txtIDCustomer.ForeColor = System.Drawing.Color.Black
         Me.txtIDCustomer.Location = New System.Drawing.Point(152, 40)
         Me.txtIDCustomer.Name = "txtIDCustomer"
-        Me.txtIDCustomer.Size = New System.Drawing.Size(169, 25)
+        Me.txtIDCustomer.Size = New System.Drawing.Size(120, 25)
         Me.txtIDCustomer.TabIndex = 2
         '
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(167, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(235, Byte), Integer))
-        Me.GroupBox1.Controls.Add(Me.btnClear)
         Me.GroupBox1.Controls.Add(Me.txtDayOfCreate)
         Me.GroupBox1.Controls.Add(Me.btnDelete)
         Me.GroupBox1.Controls.Add(Me.txtContact)
@@ -113,7 +114,7 @@ Partial Class frmCustomerGUI
         Me.GroupBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
         Me.GroupBox1.Location = New System.Drawing.Point(19, 423)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1159, 200)
+        Me.GroupBox1.Size = New System.Drawing.Size(1322, 165)
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Tác vụ người dùng"
@@ -122,21 +123,49 @@ Partial Class frmCustomerGUI
         '
         Me.txtDayOfCreate.Location = New System.Drawing.Point(955, 40)
         Me.txtDayOfCreate.Name = "txtDayOfCreate"
-        Me.txtDayOfCreate.Size = New System.Drawing.Size(169, 25)
+        Me.txtDayOfCreate.Size = New System.Drawing.Size(120, 25)
         Me.txtDayOfCreate.TabIndex = 12
+        '
+        'btnDelete
+        '
+        Me.btnDelete.BackColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
+        Me.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
+        Me.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDelete.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDelete.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
+        Me.btnDelete.Location = New System.Drawing.Point(1139, 101)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(164, 44)
+        Me.btnDelete.TabIndex = 10
+        Me.btnDelete.Text = "Xóa người dùng"
+        Me.btnDelete.UseVisualStyleBackColor = False
         '
         'txtContact
         '
-        Me.txtContact.Location = New System.Drawing.Point(535, 95)
+        Me.txtContact.Location = New System.Drawing.Point(1182, 40)
         Me.txtContact.Name = "txtContact"
-        Me.txtContact.Size = New System.Drawing.Size(169, 25)
+        Me.txtContact.Size = New System.Drawing.Size(120, 25)
         Me.txtContact.TabIndex = 11
+        '
+        'btnAdd
+        '
+        Me.btnAdd.BackColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
+        Me.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
+        Me.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAdd.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAdd.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
+        Me.btnAdd.Location = New System.Drawing.Point(942, 101)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(169, 44)
+        Me.btnAdd.TabIndex = 9
+        Me.btnAdd.Text = "Thêm"
+        Me.btnAdd.UseVisualStyleBackColor = False
         '
         'txtDayOfBirth
         '
-        Me.txtDayOfBirth.Location = New System.Drawing.Point(535, 40)
+        Me.txtDayOfBirth.Location = New System.Drawing.Point(673, 40)
         Me.txtDayOfBirth.Name = "txtDayOfBirth"
-        Me.txtDayOfBirth.Size = New System.Drawing.Size(169, 25)
+        Me.txtDayOfBirth.Size = New System.Drawing.Size(120, 25)
         Me.txtDayOfBirth.TabIndex = 10
         '
         'lblDayOfCreate
@@ -151,7 +180,7 @@ Partial Class frmCustomerGUI
         'lblContact
         '
         Me.lblContact.AutoSize = True
-        Me.lblContact.Location = New System.Drawing.Point(452, 99)
+        Me.lblContact.Location = New System.Drawing.Point(1099, 44)
         Me.lblContact.Name = "lblContact"
         Me.lblContact.Size = New System.Drawing.Size(58, 17)
         Me.lblContact.TabIndex = 7
@@ -160,7 +189,7 @@ Partial Class frmCustomerGUI
         'lblDayOfBirth
         '
         Me.lblDayOfBirth.AutoSize = True
-        Me.lblDayOfBirth.Location = New System.Drawing.Point(452, 43)
+        Me.lblDayOfBirth.Location = New System.Drawing.Point(590, 43)
         Me.lblDayOfBirth.Name = "lblDayOfBirth"
         Me.lblDayOfBirth.Size = New System.Drawing.Size(77, 17)
         Me.lblDayOfBirth.TabIndex = 5
@@ -168,15 +197,15 @@ Partial Class frmCustomerGUI
         '
         'txtNameOfCustomer
         '
-        Me.txtNameOfCustomer.Location = New System.Drawing.Point(152, 100)
+        Me.txtNameOfCustomer.Location = New System.Drawing.Point(433, 40)
         Me.txtNameOfCustomer.Name = "txtNameOfCustomer"
-        Me.txtNameOfCustomer.Size = New System.Drawing.Size(169, 25)
+        Me.txtNameOfCustomer.Size = New System.Drawing.Size(120, 25)
         Me.txtNameOfCustomer.TabIndex = 4
         '
         'lblNameOfCustomer
         '
         Me.lblNameOfCustomer.AutoSize = True
-        Me.lblNameOfCustomer.Location = New System.Drawing.Point(34, 103)
+        Me.lblNameOfCustomer.Location = New System.Drawing.Point(315, 43)
         Me.lblNameOfCustomer.Name = "lblNameOfCustomer"
         Me.lblNameOfCustomer.Size = New System.Drawing.Size(112, 17)
         Me.lblNameOfCustomer.TabIndex = 3
@@ -200,9 +229,9 @@ Partial Class frmCustomerGUI
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
-        Me.btnClose.Location = New System.Drawing.Point(1031, 634)
+        Me.btnClose.Location = New System.Drawing.Point(1179, 604)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(147, 56)
+        Me.btnClose.Size = New System.Drawing.Size(162, 40)
         Me.btnClose.TabIndex = 8
         Me.btnClose.Text = "Thoát"
         Me.btnClose.UseVisualStyleBackColor = False
@@ -223,7 +252,7 @@ Partial Class frmCustomerGUI
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChungToolStripMenuItem, Me.ThôngTinToolStripMenuItem, Me.ThêmToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1195, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1353, 24)
         Me.MenuStrip1.TabIndex = 10
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -264,6 +293,13 @@ Partial Class frmCustomerGUI
         Me.NhậpĐiểmTíchLũyToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.NhậpĐiểmTíchLũyToolStripMenuItem.Text = "Nhập điểm tích lũy "
         '
+        'ThôngTinHệSốToolStripMenuItem
+        '
+        Me.ThôngTinHệSốToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
+        Me.ThôngTinHệSốToolStripMenuItem.Name = "ThôngTinHệSốToolStripMenuItem"
+        Me.ThôngTinHệSốToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.ThôngTinHệSốToolStripMenuItem.Text = "Thông tin hệ số"
+        '
         'ThêmToolStripMenuItem
         '
         Me.ThêmToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VềChúngTôiToolStripMenuItem})
@@ -279,48 +315,6 @@ Partial Class frmCustomerGUI
         Me.VềChúngTôiToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.VềChúngTôiToolStripMenuItem.Text = "Về chúng tôi"
         '
-        'btnClear
-        '
-        Me.btnClear.BackColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
-        Me.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
-        Me.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnClear.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnClear.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
-        Me.btnClear.Location = New System.Drawing.Point(984, 139)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(139, 44)
-        Me.btnClear.TabIndex = 11
-        Me.btnClear.Text = "ClearBox"
-        Me.btnClear.UseVisualStyleBackColor = False
-        '
-        'btnDelete
-        '
-        Me.btnDelete.BackColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
-        Me.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
-        Me.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDelete.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDelete.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
-        Me.btnDelete.Location = New System.Drawing.Point(807, 139)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(142, 44)
-        Me.btnDelete.TabIndex = 10
-        Me.btnDelete.Text = "Xóa người dùng"
-        Me.btnDelete.UseVisualStyleBackColor = False
-        '
-        'btnAdd
-        '
-        Me.btnAdd.BackColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
-        Me.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(176, Byte), Integer))
-        Me.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAdd.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
-        Me.btnAdd.Location = New System.Drawing.Point(610, 139)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(158, 44)
-        Me.btnAdd.TabIndex = 9
-        Me.btnAdd.Text = "Thêm"
-        Me.btnAdd.UseVisualStyleBackColor = False
-        '
         'DataGridViewCustomer
         '
         Me.DataGridViewCustomer.AutoGenerateColumns = False
@@ -330,18 +324,18 @@ Partial Class frmCustomerGUI
         Me.DataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewCustomer.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDCustomerDataGridViewTextBoxColumn, Me.FullNameDataGridViewTextBoxColumn, Me.DateOfBirthDataGridViewTextBoxColumn, Me.ContactDataGridViewTextBoxColumn, Me.DateOfCreateDataGridViewTextBoxColumn})
         Me.DataGridViewCustomer.DataSource = Me.TblCustomerBindingSource
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(241, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCustomer.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(241, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCustomer.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewCustomer.Location = New System.Drawing.Point(19, 110)
         Me.DataGridViewCustomer.Name = "DataGridViewCustomer"
         Me.DataGridViewCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewCustomer.Size = New System.Drawing.Size(1159, 299)
+        Me.DataGridViewCustomer.Size = New System.Drawing.Size(1322, 299)
         Me.DataGridViewCustomer.TabIndex = 12
         '
         'btnSearch
@@ -358,12 +352,9 @@ Partial Class frmCustomerGUI
         Me.btnSearch.Text = "Tìm kiếm"
         Me.btnSearch.UseVisualStyleBackColor = False
         '
-        'ThôngTinHệSốToolStripMenuItem
+        'TblCustomerBindingSource
         '
-        Me.ThôngTinHệSốToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(163, Byte), Integer))
-        Me.ThôngTinHệSốToolStripMenuItem.Name = "ThôngTinHệSốToolStripMenuItem"
-        Me.ThôngTinHệSốToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
-        Me.ThôngTinHệSốToolStripMenuItem.Text = "Thông tin hệ số"
+        Me.TblCustomerBindingSource.DataSource = GetType(PointCustomer_Rebuild.tblCustomer)
         '
         'IDCustomerDataGridViewTextBoxColumn
         '
@@ -380,31 +371,33 @@ Partial Class frmCustomerGUI
         'DateOfBirthDataGridViewTextBoxColumn
         '
         Me.DateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DateOfBirthDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.DateOfBirthDataGridViewTextBoxColumn.HeaderText = "Ngày sinh "
         Me.DateOfBirthDataGridViewTextBoxColumn.Name = "DateOfBirthDataGridViewTextBoxColumn"
         '
         'ContactDataGridViewTextBoxColumn
         '
         Me.ContactDataGridViewTextBoxColumn.DataPropertyName = "Contact"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ContactDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.ContactDataGridViewTextBoxColumn.HeaderText = "SĐT Liên hệ"
         Me.ContactDataGridViewTextBoxColumn.Name = "ContactDataGridViewTextBoxColumn"
         '
         'DateOfCreateDataGridViewTextBoxColumn
         '
         Me.DateOfCreateDataGridViewTextBoxColumn.DataPropertyName = "DateOfCreate"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DateOfCreateDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.DateOfCreateDataGridViewTextBoxColumn.HeaderText = "Ngày tạo"
         Me.DateOfCreateDataGridViewTextBoxColumn.Name = "DateOfCreateDataGridViewTextBoxColumn"
-        '
-        'TblCustomerBindingSource
-        '
-        Me.TblCustomerBindingSource.DataSource = GetType(PointCustomer_Rebuild.tblCustomer)
         '
         'frmCustomerGUI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1195, 701)
+        Me.ClientSize = New System.Drawing.Size(1353, 660)
         Me.Controls.Add(Me.btnSearch)
         Me.Controls.Add(Me.DataGridViewCustomer)
         Me.Controls.Add(Me.txtSearch)
@@ -457,12 +450,11 @@ Partial Class frmCustomerGUI
     Friend WithEvents btnDelete As Button
     Friend WithEvents btnAdd As Button
     Friend WithEvents DataGridViewCustomer As DataGridView
-    Friend WithEvents btnClear As Button
     Friend WithEvents btnSearch As Button
+    Friend WithEvents ThôngTinHệSốToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents IDCustomerDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FullNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DateOfBirthDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ContactDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DateOfCreateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ThôngTinHệSốToolStripMenuItem As ToolStripMenuItem
 End Class
