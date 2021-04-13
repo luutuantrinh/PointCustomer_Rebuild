@@ -36,6 +36,13 @@ Public Class frmCustomerGUI
     Private Sub VềChúngTôiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VềChúngTôiToolStripMenuItem.Click
 
     End Sub
+
+
+    Private Sub ThôngTinHệSốToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ThôngTinHệSốToolStripMenuItem.Click
+        Dim OBJ As New frmCoefficientGUI
+        OBJ.Show()
+        Me.Hide()
+    End Sub
 #End Region
 
 #Region " Method"
@@ -54,17 +61,17 @@ Public Class frmCustomerGUI
         'MsgBox("Ok")
     End Sub
 
-    Private Sub DataGridViewCustomer_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewCustomer.CellClick
-        is_viewing = False
-        Dim i As Integer
-        i = DataGridViewCustomer.CurrentRow.Index
-        Me.txtIDCustomer.Text = DataGridViewCustomer.Item(0, i).Value
-        Me.txtNameOfCustomer.Text = DataGridViewCustomer.Item(1, i).Value
-        Me.txtDayOfBirth.Text = DataGridViewCustomer.Item(2, i).Value
-        Me.txtContact.Text = DataGridViewCustomer.Item(3, i).Value
-        Me.txtDayOfCreate.Text = DataGridViewCustomer.Item(4, i).Value
-        is_viewing = True
-    End Sub
+    'Private Sub DataGridViewCustomer_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewCustomer.CellClick
+    '    is_viewing = False
+    '    Dim i As Integer
+    '    i = DataGridViewCustomer.CurrentRow.Index
+    '    Me.txtIDCustomer.Text = DataGridViewCustomer.Item(0, i).Value
+    '    Me.txtNameOfCustomer.Text = DataGridViewCustomer.Item(1, i).Value
+    '    Me.txtDayOfBirth.Text = DataGridViewCustomer.Item(2, i).Value
+    '    Me.txtContact.Text = DataGridViewCustomer.Item(3, i).Value
+    '    Me.txtDayOfCreate.Text = DataGridViewCustomer.Item(4, i).Value
+    '    is_viewing = True
+    'End Sub
 
     'làm sạch dữ liệu ở các ô 
     Public Sub ClearTextBox(parent As Control)
@@ -250,6 +257,7 @@ Public Class frmCustomerGUI
         th_NhanDuLieu.IsBackground = True
         th_NhanDuLieu.Start()
     End Sub
+
 
 
 #End Region

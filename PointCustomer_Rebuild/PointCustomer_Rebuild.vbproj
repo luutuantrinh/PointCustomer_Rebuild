@@ -83,6 +83,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\tblCoefficient.vb" />
     <Compile Include="Database\tblCustomer.vb" />
     <Compile Include="Database\tblEvent.vb" />
     <Compile Include="Database\tblInitializationPoint.vb" />
@@ -98,6 +99,12 @@
       <DependentUpon>AddPointGUI.vb</DependentUpon>
     </Compile>
     <Compile Include="GUI\AddPointGUI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CoefficientGUI.Designer.vb">
+      <DependentUpon>CoefficientGUI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CoefficientGUI.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\CustomerGUI.Designer.vb">
@@ -129,6 +136,14 @@
       <DependentUpon>202104080235351_point.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202104080235351_point.vb" />
+    <Compile Include="Migrations\202104130359092_point1.designer.vb">
+      <DependentUpon>202104130359092_point1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104130359092_point1.vb" />
+    <Compile Include="Migrations\202104130415257_point2.designer.vb">
+      <DependentUpon>202104130415257_point2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104130415257_point2.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -151,6 +166,9 @@
     <EmbeddedResource Include="GUI\AddPointGUI.resx">
       <DependentUpon>AddPointGUI.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CoefficientGUI.resx">
+      <DependentUpon>CoefficientGUI.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\CustomerGUI.resx">
       <DependentUpon>CustomerGUI.vb</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +180,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104080235351_point.resx">
       <DependentUpon>202104080235351_point.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104130359092_point1.resx">
+      <DependentUpon>202104130359092_point1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104130415257_point2.resx">
+      <DependentUpon>202104130415257_point2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -175,6 +199,7 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\tblCoefficient.datasource" />
     <None Include="My Project\DataSources\tblCustomer.datasource" />
     <None Include="My Project\DataSources\tblInitializationPoint.datasource" />
     <None Include="My Project\Settings.settings">

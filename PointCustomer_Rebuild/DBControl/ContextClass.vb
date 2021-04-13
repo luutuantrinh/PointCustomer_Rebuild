@@ -18,4 +18,6 @@ Public Class ContextClass
 
     Public Property Events As DbSet(Of tblEvent)
     Public Property InitializationPoints As DbSet(Of tblInitializationPoint)
+
+    Public Property Coefficients As DbSet(Of tblCoefficient)
 End Class

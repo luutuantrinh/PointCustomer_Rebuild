@@ -14,16 +14,20 @@
     Public Function FetchInitializationPoint() As List(Of tblInitializationPoint)
         Return _dbContext.InitializationPoints.ToList()
     End Function
+
+    Public Function FetchCoefficient() As List(Of tblCoefficient)
+        Return _dbContext.Coefficients.ToList()
+    End Function
 #End Region
 
 #Region "FunctionAdd"
-    Public Function AddCustomer(ByVal customer As tblCustomer) As Integer
+    Public Function AddCustomer(ByVal customer As tblCustomer) As String
         _dbContext.Customers.Add(customer)
         _dbContext.SaveChanges()
         Return customer.IDCustomer
     End Function
 
-    Public Function AddEvent(ByVal _event As tblEvent) As Integer
+    Public Function AddEvent(ByVal _event As tblEvent) As String
         _dbContext.Events.Add(_event)
         _dbContext.SaveChanges()
         Return _event.IDDayEvent
@@ -34,6 +38,13 @@
         _dbContext.InitializationPoints.Add(initializationPoint)
         _dbContext.SaveChanges()
         Return initializationPoint.IDInitializationPoint
+    End Function
+
+
+    Public Function AddCoefficient(ByVal coefficient As tblCoefficient) As String
+        _dbContext.Coefficients.Add(coefficient)
+        _dbContext.SaveChanges()
+        Return coefficient.IDCoefficient
     End Function
 
 #End Region

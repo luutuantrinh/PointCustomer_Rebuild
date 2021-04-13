@@ -70,7 +70,7 @@ Public Class frmAddPointGUI
         'Lấy ra ngày sinh trùng với mã khách hàng trong textbox 
         Dim dateVariablesBỉthday As Date
         dateVariablesBỉthday = db.Customers.Where(Function(u) u.IDCustomer = cbIDCustomer.Text).Select(Function(u) u.DateOfBirth).SingleOrDefault()
-        MsgBox(dateVariablesBỉthday)
+        ' MsgBox(dateVariablesBỉthday)
 
         'Lấy ngày tháng của ngày chọn trong ngày sinh của người đang được chọn 
         Dim monthBirth = dateVariablesBỉthday.Month()
