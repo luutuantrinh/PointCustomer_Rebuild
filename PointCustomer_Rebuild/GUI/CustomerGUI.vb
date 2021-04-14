@@ -34,7 +34,8 @@ Public Class frmCustomerGUI
     End Sub
 
     Private Sub VềChúngTôiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VềChúngTôiToolStripMenuItem.Click
-
+        Dim OBJ As New frmAboutGUI
+        OBJ.Show()
     End Sub
 
 

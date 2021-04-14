@@ -113,11 +113,10 @@
     <Compile Include="GUI\CustomerGUI.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\IntroGUI.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="GUI\IntroGUI.Designer.vb">
       <DependentUpon>IntroGUI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\IntroGUI.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\PointGUI.Designer.vb">
@@ -169,6 +168,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GUI\AboutGUI.resx">
+      <DependentUpon>AboutGUI.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\AddPointGUI.resx">
       <DependentUpon>AddPointGUI.vb</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CustomerGUI.resx">
       <DependentUpon>CustomerGUI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\IntroGUI.resx">
+      <DependentUpon>IntroGUI.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PointGUI.resx">
       <DependentUpon>PointGUI.vb</DependentUpon>
